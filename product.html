@@ -6,693 +6,90 @@
   <title>商品介紹 | 奶糖熊童裝</title>
   <meta name="description" content="奶糖熊童裝商品介紹頁，查看商品圖片、價格、尺寸與 LINE 詢問下單資訊。">
   <style>
-    :root {
-      --cream: #fff8ed;
-      --milk: #fffdfa;
-      --caramel: #b87742;
-      --toffee: #7a4b2d;
-      --cocoa: #3e2a1e;
-      --rose: #d96d64;
-      --mint: #7da896;
-      --line: #06c755;
-      --border: #ead8c3;
-      --shadow: 0 18px 50px rgba(83, 50, 28, .14);
-      --radius: 8px;
-      font-family: "Noto Serif TC", "Microsoft JhengHei", serif;
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--cocoa);
-      background:
-        radial-gradient(circle at 12% 10%, rgba(243, 196, 96, .24), transparent 27%),
-        radial-gradient(circle at 90% 16%, rgba(125, 168, 150, .18), transparent 25%),
-        linear-gradient(180deg, #fffaf2 0%, #fffdf9 48%, #f7efe3 100%);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    img { display: block; max-width: 100%; }
-
-    .topbar {
-      background: var(--toffee);
-      color: #fff9ee;
-      text-align: center;
-      padding: 9px 16px;
-      font-size: 14px;
-      letter-spacing: .04em;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 250, 242, .92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(184, 119, 66, .18);
-    }
-
-    .header-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 16px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--cocoa);
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #f8d99d, #c98249);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(184, 119, 66, .25);
-    }
-
-    .brand-name {
-      display: block;
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: .06em;
-    }
-
-    .brand-subtitle {
-      display: block;
-      margin-top: 2px;
-      font-size: 12px;
-      color: var(--caramel);
-      letter-spacing: .18em;
-    }
-
-    .header-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      color: var(--toffee);
-      font-size: 15px;
-    }
-
-    .page-shell {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 34px 22px 64px;
-    }
-
-    .breadcrumb {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      color: #826653;
-      font-size: 14px;
-      margin-bottom: 22px;
-    }
-
-    .product-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(340px, .96fr);
-      gap: 34px;
-      align-items: start;
-    }
-
-    .gallery,
-    .summary-card,
-    .detail-card {
-      background: rgba(255, 253, 250, .9);
-      border: 1px solid rgba(234, 216, 195, .92);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .gallery { padding: 14px; }
-
-    .main-photo {
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: #f1dfc9;
-    }
-
-    .main-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .thumbs {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .thumb {
-      aspect-ratio: 1;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-      background: #fff;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .thumb.is-active { border: 2px solid var(--caramel); }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; }
-
-    .summary-card {
-      padding: 28px;
-      position: sticky;
-      top: 92px;
-    }
-
-    .eyebrow {
-      margin: 0 0 8px;
-      color: var(--caramel);
-      font-size: 13px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(32px, 5vw, 56px);
-      line-height: 1.08;
-      letter-spacing: .02em;
-    }
-
-    .intro {
-      margin: 16px 0 0;
-      color: #6e5646;
-      font-size: 17px;
-      line-height: 1.85;
-    }
-
-    .badge-row {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .badge {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #f8e4db;
-      color: #9f4f43;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .price-row {
-      margin-top: 22px;
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .price {
-      color: var(--rose);
-      font-size: 34px;
-      font-weight: 900;
-    }
-
-    .compare-price {
-      color: #a99382;
-      text-decoration: line-through;
-    }
-
-    .actions {
-      margin-top: 24px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .primary-button,
-    .secondary-button,
-    .line-button {
-      min-height: 48px;
-      border: 0;
-      border-radius: var(--radius);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      font-weight: 800;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .primary-button { background: var(--toffee); color: #fffaf2; }
-    .secondary-button { background: #fff; color: var(--toffee); border: 1px solid var(--border); }
-    .line-button { background: var(--line); color: #fff; }
-    .primary-button:hover, .secondary-button:hover, .line-button:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(83, 50, 28, .15); }
-
-    .detail-grid {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .detail-card {
-      padding: 20px;
-    }
-
-    .detail-card strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .detail-card p,
-    .detail-card li {
-      color: #765b48;
-      line-height: 1.75;
-    }
-
-    .detail-card p,
-    .detail-card ul { margin: 0; }
-    .detail-card ul { padding-left: 20px; }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      transform: translate(-50%, 20px);
-      background: var(--cocoa);
-      color: #fff;
-      padding: 12px 16px;
-      border-radius: 999px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease, transform .2s ease;
-      z-index: 50;
-    }
-
-    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
-
-    @media (max-width: 900px) {
-      .product-layout { grid-template-columns: 1fr; }
-      .summary-card { position: static; }
-      .detail-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 560px) {
-      .topbar { font-size: 12px; }
-      .header-inner { padding: 12px 14px; }
-      .brand-mark { width: 36px; height: 36px; }
-      .brand-name { font-size: 19px; }
-      .brand-subtitle { display: none; }
-      .header-links { font-size: 14px; gap: 10px; }
-      .page-shell { padding: 24px 14px 44px; }
-      .summary-card { padding: 22px; }
-      .thumbs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .price { font-size: 30px; }
-    }
+    :root { --cream:#fff8ed; --milk:#fffdfa; --caramel:#b87742; --toffee:#7a4b2d; --cocoa:#3e2a1e; --rose:#d96d64; --line:#06c755; --border:#ead8c3; --shadow:0 18px 50px rgba(83,50,28,.14); --radius:8px; font-family:"Noto Serif TC","Microsoft JhengHei",serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--cocoa); background:radial-gradient(circle at 12% 10%, rgba(243,196,96,.24), transparent 27%), radial-gradient(circle at 90% 16%, rgba(125,168,150,.18), transparent 25%), linear-gradient(180deg,#fffaf2 0%,#fffdf9 48%,#f7efe3 100%); min-height:100vh; }
+    a { color:inherit; text-decoration:none; } button { font:inherit; } img { display:block; max-width:100%; }
+    .topbar { background:var(--toffee); color:#fff9ee; text-align:center; padding:9px 16px; font-size:14px; letter-spacing:.04em; }
+    .site-header { position:sticky; top:0; z-index:20; background:rgba(255,250,242,.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(184,119,66,.18); }
+    .header-inner { max-width:1180px; margin:0 auto; padding:16px 22px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:inline-flex; align-items:center; gap:10px; }
+    .brand-mark { width:42px; height:42px; border-radius:50%; background:linear-gradient(145deg,#f8d99d,#c98249); display:grid; place-items:center; color:#fff; font-weight:800; box-shadow:0 8px 20px rgba(184,119,66,.25); }
+    .brand-name { display:block; font-size:25px; font-weight:800; letter-spacing:.06em; }
+    .brand-subtitle { display:block; margin-top:2px; font-size:12px; color:var(--caramel); letter-spacing:.18em; }
+    .header-links { display:flex; align-items:center; gap:16px; color:var(--toffee); font-size:15px; }
+    .page-shell { max-width:1180px; margin:0 auto; padding:34px 22px 64px; }
+    .breadcrumb { display:flex; flex-wrap:wrap; gap:8px; color:#826653; font-size:14px; margin-bottom:22px; }
+    .product-layout { display:grid; grid-template-columns:minmax(0,1.04fr) minmax(340px,.96fr); gap:34px; align-items:start; }
+    .gallery,.summary-card,.detail-card { background:rgba(255,253,250,.9); border:1px solid rgba(234,216,195,.92); border-radius:var(--radius); box-shadow:var(--shadow); }
+    .gallery { padding:14px; }
+    .main-photo { aspect-ratio:4/5; overflow:hidden; border-radius:var(--radius); background:#f1dfc9; }
+    .main-photo img { width:100%; height:100%; object-fit:cover; }
+    .thumbs { margin-top:12px; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; }
+    .thumb { aspect-ratio:1; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:#fff; cursor:pointer; padding:0; }
+    .thumb.is-active { border:2px solid var(--caramel); }
+    .thumb img { width:100%; height:100%; object-fit:cover; }
+    .summary-card { padding:28px; position:sticky; top:92px; }
+    .eyebrow { margin:0 0 8px; color:var(--caramel); font-size:13px; letter-spacing:.18em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(32px,5vw,56px); line-height:1.08; letter-spacing:.02em; }
+    .intro { margin:16px 0 0; color:#6e5646; font-size:17px; line-height:1.85; }
+    .badge-row { margin-top:18px; display:flex; flex-wrap:wrap; gap:8px; }
+    .badge { padding:6px 10px; border-radius:999px; background:#f8e4db; color:#9f4f43; font-size:13px; font-weight:700; }
+    .price-row { margin-top:22px; display:flex; align-items:baseline; gap:10px; }
+    .price { color:var(--rose); font-size:34px; font-weight:900; }
+    .compare-price { color:#a99382; text-decoration:line-through; }
+    .actions { margin-top:24px; display:grid; gap:10px; }
+    .primary-button,.secondary-button,.line-button { min-height:48px; border:0; border-radius:var(--radius); display:inline-flex; align-items:center; justify-content:center; gap:8px; cursor:pointer; font-weight:800; transition:transform .2s ease, box-shadow .2s ease; }
+    .primary-button { background:var(--toffee); color:#fffaf2; } .secondary-button { background:#fff; color:var(--toffee); border:1px solid var(--border); } .line-button { background:var(--line); color:#fff; }
+    .primary-button:hover,.secondary-button:hover,.line-button:hover { transform:translateY(-1px); box-shadow:0 12px 26px rgba(83,50,28,.15); }
+    .detail-grid { margin-top:24px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .detail-card { padding:20px; }
+    .detail-card strong { display:block; margin-bottom:8px; font-size:18px; }
+    .detail-card p,.detail-card li { color:#765b48; line-height:1.75; }
+    .detail-card p,.detail-card ul { margin:0; } .detail-card ul { padding-left:20px; }
+    .toast { position:fixed; left:50%; bottom:24px; transform:translate(-50%,20px); background:var(--cocoa); color:#fff; padding:12px 16px; border-radius:999px; opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease; z-index:50; }
+    .toast.is-visible { opacity:1; transform:translate(-50%,0); }
+    @media (max-width:900px) { .product-layout{grid-template-columns:1fr;} .summary-card{position:static;} .detail-grid{grid-template-columns:1fr;} }
+    @media (max-width:560px) { .topbar{font-size:12px;} .header-inner{padding:12px 14px;} .brand-mark{width:36px;height:36px;} .brand-name{font-size:19px;} .brand-subtitle{display:none;} .header-links{font-size:14px;gap:10px;} .page-shell{padding:24px 14px 44px;} .summary-card{padding:22px;} .thumbs{grid-template-columns:repeat(4,minmax(0,1fr));} .price{font-size:30px;} }
   </style>
 </head>
 <body>
   <div class="topbar">商品尺寸與現貨可透過 LINE 客服確認</div>
-
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index.html#top" aria-label="奶糖熊童裝首頁">
-        <span class="brand-mark">熊</span>
-        <span>
-          <span class="brand-name">奶糖熊童裝</span>
-          <span class="brand-subtitle">MILK CARAMEL BEAR</span>
-        </span>
-      </a>
-      <nav class="header-links" aria-label="商品頁連結">
-        <a href="index.html#products">全部商品</a>
-        <a href="https://line.me/ti/p/bkR5dGwHam" target="_blank" rel="noopener noreferrer">LINE</a>
-      </nav>
-    </div>
-  </header>
-
+  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html#top" aria-label="奶糖熊童裝首頁"><span class="brand-mark">熊</span><span><span class="brand-name">奶糖熊童裝</span><span class="brand-subtitle">MILK CARAMEL BEAR</span></span></a><nav class="header-links" aria-label="商品頁連結"><a href="index.html#products">全部商品</a><a href="https://line.me/ti/p/bkR5dGwHam" target="_blank" rel="noopener noreferrer">LINE</a></nav></div></header>
   <main class="page-shell">
-    <nav class="breadcrumb" aria-label="麵包屑">
-      <a href="index.html#top">首頁</a>
-      <span>/</span>
-      <a href="index.html#products">商品</a>
-      <span>/</span>
-      <span data-breadcrumb-name>商品介紹</span>
-    </nav>
-
-    <section class="product-layout" aria-labelledby="product-title">
-      <div class="gallery">
-        <div class="main-photo"><img data-main-image src="" alt=""></div>
-        <div class="thumbs" data-thumbs></div>
-      </div>
-
-      <article class="summary-card">
-        <p class="eyebrow" data-product-label>product detail</p>
-        <h1 id="product-title" data-product-name></h1>
-        <p class="intro" data-product-note></p>
-        <div class="badge-row">
-          <span class="badge" data-product-status></span>
-          <span class="badge" data-product-size></span>
-        </div>
-        <div class="price-row">
-          <strong class="price" data-product-price></strong>
-          <span class="compare-price" data-product-compare></span>
-        </div>
-        <div class="actions">
-          <button class="primary-button" type="button" data-add-cart>加入購物車</button>
-          <button class="line-button" type="button" data-line-product>用 LINE 詢問此商品</button>
-          <a class="secondary-button" href="index.html#products">回全部商品</a>
-        </div>
-      </article>
-    </section>
-
-    <section class="detail-grid" aria-label="商品詳細資訊">
-      <div class="detail-card">
-        <strong>商品說明</strong>
-        <p data-product-description></p>
-      </div>
-      <div class="detail-card">
-        <strong>尺寸與版型</strong>
-        <p data-product-fit></p>
-      </div>
-      <div class="detail-card">
-        <strong>下單提醒</strong>
-        <ul>
-          <li>現貨、尺寸與顏色請以 LINE 客服回覆為準。</li>
-          <li>加入購物車後可回主頁一起傳送訂單明細。</li>
-          <li>若需要建議尺寸，可提供孩子身高與體重。</li>
-        </ul>
-      </div>
-    </section>
+    <nav class="breadcrumb" aria-label="麵包屑"><a href="index.html#top">首頁</a><span>/</span><a href="index.html#products">商品</a><span>/</span><span data-breadcrumb-name>商品介紹</span></nav>
+    <section class="product-layout" aria-labelledby="product-title"><div class="gallery"><div class="main-photo"><img data-main-image src="" alt=""></div><div class="thumbs" data-thumbs></div></div><article class="summary-card"><p class="eyebrow" data-product-label>product detail</p><h1 id="product-title" data-product-name></h1><p class="intro" data-product-note></p><div class="badge-row"><span class="badge" data-product-status></span><span class="badge" data-product-size></span></div><div class="price-row"><strong class="price" data-product-price></strong><span class="compare-price" data-product-compare></span></div><div class="actions"><button class="primary-button" type="button" data-add-cart>加入購物車</button><button class="line-button" type="button" data-line-product>用 LINE 詢問此商品</button><a class="secondary-button" href="index.html#products">回全部商品</a></div></article></section>
+    <section class="detail-grid" aria-label="商品詳細資訊"><div class="detail-card"><strong>商品說明</strong><p data-product-description></p></div><div class="detail-card"><strong>尺寸與版型</strong><p data-product-fit></p></div><div class="detail-card"><strong>下單提醒</strong><ul><li>現貨、尺寸與顏色請以 LINE 客服回覆為準。</li><li>加入購物車後可回主頁一起傳送訂單明細。</li><li>若需要建議尺寸，可提供孩子身高與體重。</li></ul></div></section>
   </main>
-
   <div class="toast" data-toast>已加入購物車</div>
-
   <script>
     const lineUrl = "https://line.me/ti/p/bkR5dGwHam";
     const products = [
-      {
-        id: "mb-set-01",
-        name: "灰藍口袋冰絲涼感短褲",
-        category: "短褲",
-        label: "短褲",
-        size: "80-130cm",
-        price: 680,
-        comparePrice: 880,
-        status: "新品",
-        note: "整套搭配完成，適合週末出遊與生日聚會。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "尺寸為 80-130cm，實際現貨與建議尺寸請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2Njk4MDE0LzE3NzYxNTkzMDNfYmExNWYxYjNhNzRkOTE2MmI4ZWUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=582b4cea5b53ef37",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2Njk4MDE0LzE3NzYxNTkzMDNfYmExNWYxYjNhNzRkOTE2MmI4ZWUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=582b4cea5b53ef37"]
-      },
-      {
-        id: "mb-top-01",
-        name: "笑臉棉質內搭褲",
-        category: "下著",
-        label: "下著",
-        size: "90-140cm",
-        price: 390,
-        comparePrice: 520,
-        status: "熱銷",
-        note: "親膚棉感，單穿或內搭都好整理。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "尺寸為 90-140cm，實際現貨與建議尺寸請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDM2LzE3NzYxNTE5NTBfZjc0NTMxYmIxOWZhZmE0OWY2NTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=16c9102aa24be339",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDM2LzE3NzYxNTE5NTBfZjc0NTMxYmIxOWZhZmE0OWY2NTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=16c9102aa24be339"]
-      },
-      {
-        id: "mb-bottom-01",
-        name: "笑臉棉質內搭褲-babe款",
-        category: "下著",
-        label: "下著",
-        size: "80-130cm",
-        price: 420,
-        comparePrice: 560,
-        status: "涼感",
-        note: "口袋細節加分，活動量大的孩子也舒服。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "尺寸為 80-130cm，實際現貨與建議尺寸請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDMxLzE3NzYxNTE3NjlfZTE1MTEyZmE4ODA3YmQ2ODZhNWMuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=8c33c099775db632",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDMxLzE3NzYxNTE3NjlfZTE1MTEyZmE4ODA3YmQ2ODZhNWMuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=8c33c099775db632"]
-      },
-      {
-        id: "mb-set-02",
-        name: "夏日條紋背心兩件組",
-        category: "套裝",
-        label: "套裝",
-        size: "90-150cm",
-        price: 760,
-        comparePrice: 980,
-        status: "推薦",
-        note: "清爽條紋配色，夏季外出拍照很上相。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "尺寸為 90-150cm，實際現貨與建議尺寸請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE4LzE3NzYxNTg5NDRfODMwODBjY2JiMWE0OTRiMGM1YTkuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=033a5bc36dcddf99",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE4LzE3NzYxNTg5NDRfODMwODBjY2JiMWE0OTRiMGM1YTkuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=033a5bc36dcddf99"]
-      },
-      {
-        id: "mb-top-02",
-        name: "小黃花緹花短褲",
-        category: "短褲",
-        label: "短褲",
-        size: "80-140cm",
-        price: 450,
-        comparePrice: 590,
-        status: "薄款",
-        note: "冷氣房、傍晚散步都能多一層保護。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "尺寸為 80-140cm，實際現貨與建議尺寸請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE1LzE3NzYxNTkxMDdfYTc0ZmU5YzVkNmI4ZTM5ZjMwZGIuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=cc42f1ef7c6b5eb1",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE1LzE3NzYxNTkxMDdfYTc0ZmU5YzVkNmI4ZTM5ZjMwZGIuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=cc42f1ef7c6b5eb1"]
-      },
-      {
-        id: "mb-accessory-01",
-        name: "田園碎花層次褲裙",
-        category: "短褲",
-        label: "短褲",
-        size: "48-54cm",
-        price: 320,
-        comparePrice: 420,
-        status: "配件",
-        note: "外出防曬與造型一次到位。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "尺寸為 48-54cm，實際現貨與建議尺寸請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjEyLzE3NzYxNTg3MTBfMzY1ZjdjZTMzZDM5YzIyNGEwNTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=9bc55218d3450554",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjEyLzE3NzYxNTg3MTBfMzY1ZjdjZTMzZDM5YzIyNGEwNTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=9bc55218d3450554"]
-      },
-      {
-        id: "mb-bottom-02",
-        name: "舒服彈力牛仔褲",
-        category: "下著",
-        label: "下著",
-        size: "90-150cm",
-        price: 590,
-        comparePrice: 760,
-        status: "百搭",
-        note: "柔軟彈力版型，上學與旅行都能穿。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "尺寸為 90-150cm，實際現貨與建議尺寸請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA5LzE3NzYxNDg0NjVfZjNlNmRjNjRmMjVkMDUxYmI1M2YuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=b0f27e7ada7d5c0b",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA5LzE3NzYxNDg0NjVfZjNlNmRjNjRmMjVkMDUxYmI1M2YuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=b0f27e7ada7d5c0b"]
-      },
-      {
-        id: "mb-accessory-02",
-        name: "焦糖格紋小方巾",
-        category: "配件",
-        label: "配件",
-        size: "單一尺寸",
-        price: 180,
-        comparePrice: 260,
-        status: "加購",
-        note: "點亮簡單穿搭，也適合當小禮物。",
-        description: "保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。",
-        fit: "單一尺寸，實際現貨與搭配建議請透過 LINE 客服確認。",
-        image: "https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA2LzE3NzYxNTMwNzNfODU4NDFkZTM3YTBmYmE4ZTQ3NTcuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=ebe9b73d939a2510",
-        gallery: ["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA2LzE3NzYxNTMwNzNfODU4NDFkZTM3YTBmYmE4ZTQ3NTcuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=ebe9b73d939a2510"]
-      },
-      {
-        id: "light-set-150",
-        name: "清新薄款兩件套(男.女)",
-        category: "套裝",
-        label: "薄款套裝",
-        size: "尺寸請洽客服",
-        price: 150,
-        comparePrice: 220,
-        status: "男女童皆可",
-        note: "輕薄清爽的日常兩件套，男童女童都適合。",
-        description: "清新配色與輕盈版型適合炎熱天氣，整套穿搭省時，日常出門、上學或假日活動都能輕鬆搭配。",
-        fit: "建議依孩子身高、體重與平常穿著尺寸詢問客服，協助確認合適尺碼。",
-        image: "150元 清新薄款兩件套(男.女)/photo_2026-08-09_22-26-13.jpg",
-        gallery: [
-          "150元 清新薄款兩件套(男.女)/photo_2026-08-09_22-26-13.jpg",
-          "150元 清新薄款兩件套(男.女)/photo_2026-08-09_22-26-13 (2).jpg",
-          "150元 清新薄款兩件套(男.女)/photo_2026-08-09_22-26-13 (3).jpg"
-        ]
-      },
-      {
-        id: "boys-short-set-200",
-        name: "小童短袖套裝(男)",
-        category: "男童套裝",
-        label: "短袖套裝",
-        size: "尺寸請洽客服",
-        price: 200,
-        comparePrice: 280,
-        status: "夏季短袖",
-        note: "短袖上衣搭配下著，小童夏季活動方便好穿。",
-        description: "清爽短袖搭配休閒下著，適合小童日常活動、外出與居家穿著，整套搭好不費心。",
-        fit: "版型以活動舒適為主，若介於兩個尺寸之間，可先提供孩子身高體重給客服判斷。",
-        image: "200元 小童短袖套裝(男)/photo_2026-08-09_22-47-04.jpg",
-        gallery: [
-          "200元 小童短袖套裝(男)/photo_2026-08-09_22-47-04.jpg",
-          "200元 小童短袖套裝(男)/photo_2026-08-09_20-20-14.jpg"
-        ]
-      },
-      {
-        id: "girls-summer-210",
-        name: "夏季女童套裝",
-        category: "女童套裝",
-        label: "女童夏季",
-        size: "尺寸請洽客服",
-        price: 210,
-        comparePrice: 290,
-        status: "甜美夏季",
-        note: "甜美清爽的女童夏季款，適合日常外出與拍照。",
-        description: "女童夏季款以清爽穿著感與可愛細節為主，日常穿搭、親子出遊或聚會拍照都合適。",
-        fit: "不同批次尺寸可能略有差異，下單前建議先確認孩子目前常穿尺寸。",
-        image: "210元 夏季女童/photo_2026-08-09_22-50-43.jpg",
-        gallery: [
-          "210元 夏季女童/photo_2026-08-09_22-50-43.jpg",
-          "210元 夏季女童/photo_2026-08-09_20-23-55.jpg"
-        ]
-      },
-      {
-        id: "embroidered-set-230",
-        name: "韓版潮牌刺繡男女童套裝(男.女)",
-        category: "套裝",
-        label: "韓版刺繡",
-        size: "尺寸請洽客服",
-        price: 230,
-        comparePrice: 320,
-        status: "男女童皆可",
-        note: "韓版潮牌感刺繡設計，男童女童都能穿出俐落感。",
-        description: "刺繡細節讓整套更有重點，韓版休閒感好搭鞋款與帽子，適合喜歡俐落中性風的孩子。",
-        fit: "建議依孩子身形選擇，想穿寬鬆休閒感可與客服討論是否拿大一碼。",
-        image: "230元 韓版潮牌刺繡男女童套裝(男.女)/photo_2026-08-09_22-35-00.jpg",
-        gallery: [
-          "230元 韓版潮牌刺繡男女童套裝(男.女)/photo_2026-08-09_22-35-00.jpg",
-          "230元 韓版潮牌刺繡男女童套裝(男.女)/photo_2026-08-09_22-35-00 (2).jpg",
-          "230元 韓版潮牌刺繡男女童套裝(男.女)/photo_2026-08-09_22-35-00 (3).jpg",
-          "230元 韓版潮牌刺繡男女童套裝(男.女)/photo_2026-08-09_22-34-59.jpg",
-          "230元 韓版潮牌刺繡男女童套裝(男.女)/photo_2026-08-09_20-28-54.jpg"
-        ]
-      },
-      {
-        id: "bow-summer-set-280",
-        name: "蝴蝶結夏季套裝(女)",
-        category: "女童套裝",
-        label: "蝴蝶結套裝",
-        size: "尺寸請洽客服",
-        price: 280,
-        comparePrice: 360,
-        status: "女童夏季",
-        note: "蝴蝶結細節讓整套更甜，夏季出門清爽有造型。",
-        description: "甜美蝴蝶結元素搭配夏季套裝版型，適合女童日常、聚會與出遊穿搭。",
-        fit: "若孩子肩寬或身高成長較快，建議詢問客服確認是否需要預留空間。",
-        image: "280元 蝴蝶結夏季套裝(女)/photo_2026-08-09_22-43-28.jpg",
-        gallery: [
-          "280元 蝴蝶結夏季套裝(女)/photo_2026-08-09_22-43-28.jpg",
-          "280元 蝴蝶結夏季套裝(女)/photo_2026-08-09_20-18-37.jpg"
-        ]
-      }
+      { id:"mb-set-01", name:"灰藍口袋冰絲涼感短褲", category:"短褲", label:"短褲", size:"80-130cm", price:680, comparePrice:880, status:"新品", note:"整套搭配完成，適合週末出遊與生日聚會。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"尺寸為 80-130cm，實際現貨與建議尺寸請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2Njk4MDE0LzE3NzYxNTkzMDNfYmExNWYxYjNhNzRkOTE2MmI4ZWUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=582b4cea5b53ef37", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2Njk4MDE0LzE3NzYxNTkzMDNfYmExNWYxYjNhNzRkOTE2MmI4ZWUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=582b4cea5b53ef37"] },
+      { id:"mb-top-01", name:"笑臉棉質內搭褲", category:"下著", label:"下著", size:"90-140cm", price:390, comparePrice:520, status:"熱銷", note:"親膚棉感，單穿或內搭都好整理。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"尺寸為 90-140cm，實際現貨與建議尺寸請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDM2LzE3NzYxNTE5NTBfZjc0NTMxYmIxOWZhZmE0OWY2NTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=16c9102aa24be339", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDM2LzE3NzYxNTE5NTBfZjc0NTMxYmIxOWZhZmE0OWY2NTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=16c9102aa24be339"] },
+      { id:"mb-bottom-01", name:"笑臉棉質內搭褲-babe款", category:"下著", label:"下著", size:"80-130cm", price:420, comparePrice:560, status:"涼感", note:"口袋細節加分，活動量大的孩子也舒服。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"尺寸為 80-130cm，實際現貨與建議尺寸請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDMxLzE3NzYxNTE3NjlfZTE1MTEyZmE4ODA3YmQ2ODZhNWMuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=8c33c099775db632", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTkyMDMxLzE3NzYxNTE3NjlfZTE1MTEyZmE4ODA3YmQ2ODZhNWMuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=8c33c099775db632"] },
+      { id:"mb-set-02", name:"夏日條紋背心兩件組", category:"套裝", label:"套裝", size:"90-150cm", price:760, comparePrice:980, status:"推薦", note:"清爽條紋配色，夏季外出拍照很上相。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"尺寸為 90-150cm，實際現貨與建議尺寸請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE4LzE3NzYxNTg5NDRfODMwODBjY2JiMWE0OTRiMGM1YTkuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=033a5bc36dcddf99", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE4LzE3NzYxNTg5NDRfODMwODBjY2JiMWE0OTRiMGM1YTkuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=033a5bc36dcddf99"] },
+      { id:"mb-top-02", name:"小黃花緹花短褲", category:"短褲", label:"短褲", size:"80-140cm", price:450, comparePrice:590, status:"薄款", note:"冷氣房、傍晚散步都能多一層保護。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"尺寸為 80-140cm，實際現貨與建議尺寸請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE1LzE3NzYxNTkxMDdfYTc0ZmU5YzVkNmI4ZTM5ZjMwZGIuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=cc42f1ef7c6b5eb1", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjE1LzE3NzYxNTkxMDdfYTc0ZmU5YzVkNmI4ZTM5ZjMwZGIuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=cc42f1ef7c6b5eb1"] },
+      { id:"mb-accessory-01", name:"田園碎花層次褲裙", category:"短褲", label:"短褲", size:"48-54cm", price:320, comparePrice:420, status:"配件", note:"外出防曬與造型一次到位。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"尺寸為 48-54cm，實際現貨與建議尺寸請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjEyLzE3NzYxNTg3MTBfMzY1ZjdjZTMzZDM5YzIyNGEwNTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=9bc55218d3450554", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjEyLzE3NzYxNTg3MTBfMzY1ZjdjZTMzZDM5YzIyNGEwNTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=9bc55218d3450554"] },
+      { id:"mb-bottom-02", name:"舒服彈力牛仔褲", category:"下著", label:"下著", size:"90-150cm", price:590, comparePrice:760, status:"百搭", note:"柔軟彈力版型，上學與旅行都能穿。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"尺寸為 90-150cm，實際現貨與建議尺寸請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA5LzE3NzYxNDg0NjVfZjNlNmRjNjRmMjVkMDUxYmI1M2YuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=b0f27e7ada7d5c0b", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA5LzE3NzYxNDg0NjVfZjNlNmRjNjRmMjVkMDUxYmI1M2YuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=b0f27e7ada7d5c0b"] },
+      { id:"mb-accessory-02", name:"焦糖格紋小方巾", category:"配件", label:"配件", size:"單一尺寸", price:180, comparePrice:260, status:"加購", note:"點亮簡單穿搭，也適合當小禮物。", description:"保留主頁原本商品資訊，提供單品圖片、價格與 LINE 詢問入口，方便客人從主頁點進來查看。", fit:"單一尺寸，實際現貨與搭配建議請透過 LINE 客服確認。", image:"https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA2LzE3NzYxNTMwNzNfODU4NDFkZTM3YTBmYmE4ZTQ3NTcuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=ebe9b73d939a2510", gallery:["https://cdn-general.cybassets.com/media/W1siZiIsIjE5MzEyL3Byb2R1Y3RzLzY2MTIyMjA2LzE3NzYxNTMwNzNfODU4NDFkZTM3YTBmYmE4ZTQ3NTcuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=ebe9b73d939a2510"] },
+      { id:"light-set-150", name:"清新薄款兩件套(男.女)", category:"套裝", label:"薄款套裝", size:"尺寸請洽客服", price:150, comparePrice:220, status:"男女童皆可", note:"輕薄清爽的日常兩件套，男童女童都適合。", description:"清新配色與輕盈版型適合炎熱天氣，整套穿搭省時，日常出門、上學或假日活動都能輕鬆搭配。", fit:"建議依孩子身高、體重與平常穿著尺寸詢問客服，協助確認合適尺碼。", image:"https://i.ibb.co/V0kH3ZmJ/photo-2026-08-09-22-26-13.jpg", gallery:["https://i.ibb.co/V0kH3ZmJ/photo-2026-08-09-22-26-13.jpg","https://i.ibb.co/RpqY29sL/photo-2026-08-09-22-26-13-2.jpg","https://i.ibb.co/fY6ZG4Z9/photo-2026-08-09-22-26-13-3.jpg"] },
+      { id:"boys-short-set-200", name:"小童短袖套裝(男)", category:"男童套裝", label:"短袖套裝", size:"尺寸請洽客服", price:200, comparePrice:280, status:"夏季短袖", note:"短袖上衣搭配下著，小童夏季活動方便好穿。", description:"清爽短袖搭配休閒下著，適合小童日常活動、外出與居家穿著，整套搭好不費心。", fit:"版型以活動舒適為主，若介於兩個尺寸之間，可先提供孩子身高體重給客服判斷。", image:"https://i.ibb.co/zHF3D11N/photo-2026-08-09-22-47-04.jpg", gallery:["https://i.ibb.co/zHF3D11N/photo-2026-08-09-22-47-04.jpg","https://i.ibb.co/G3PN53vD/photo-2026-08-09-20-20-14.jpg"] },
+      { id:"girls-summer-210", name:"夏季女童套裝", category:"女童套裝", label:"女童夏季", size:"尺寸請洽客服", price:210, comparePrice:290, status:"甜美夏季", note:"甜美清爽的女童夏季款，適合日常外出與拍照。", description:"女童夏季款以清爽穿著感與可愛細節為主，日常穿搭、親子出遊或聚會拍照都合適。", fit:"不同批次尺寸可能略有差異，下單前建議先確認孩子目前常穿尺寸。", image:"https://i.ibb.co/HLLPKdhF/photo-2026-08-09-22-50-43.jpg", gallery:["https://i.ibb.co/HLLPKdhF/photo-2026-08-09-22-50-43.jpg","https://i.ibb.co/jk1FwGhg/photo-2026-08-09-20-23-55.jpg"] },
+      { id:"embroidered-set-230", name:"韓版潮牌刺繡男女童套裝(男.女)", category:"套裝", label:"韓版刺繡", size:"尺寸請洽客服", price:230, comparePrice:320, status:"男女童皆可", note:"韓版潮牌感刺繡設計，男童女童都能穿出俐落感。", description:"刺繡細節讓整套更有重點，韓版休閒感好搭鞋款與帽子，適合喜歡俐落中性風的孩子。", fit:"建議依孩子身形選擇，想穿寬鬆休閒感可與客服討論是否拿大一碼。", image:"https://i.ibb.co/dwLb6mhL/photo-2026-08-09-22-35-00.jpg", gallery:["https://i.ibb.co/dwLb6mhL/photo-2026-08-09-22-35-00.jpg","https://i.ibb.co/GfxqT5xP/photo-2026-08-09-22-35-00-2.jpg","https://i.ibb.co/bjNtFXkT/photo-2026-08-09-22-35-00-3.jpg","https://i.ibb.co/QvM25R6J/photo-2026-08-09-22-34-59.jpg","https://i.ibb.co/kg28S9zk/photo-2026-08-09-22-34-59-2.jpg","https://i.ibb.co/DPLphpd0/photo-2026-08-09-20-28-54.jpg"] },
+      { id:"bow-summer-set-280", name:"蝴蝶結夏季套裝(女)", category:"女童套裝", label:"蝴蝶結套裝", size:"尺寸請洽客服", price:280, comparePrice:360, status:"女童夏季", note:"蝴蝶結細節讓整套更甜，夏季出門清爽有造型。", description:"甜美蝴蝶結元素搭配夏季套裝版型，適合女童日常、聚會與出遊穿搭。", fit:"若孩子肩寬或身高成長較快，建議詢問客服確認是否需要預留空間。", image:"https://i.ibb.co/8nnBJhpG/photo-2026-08-09-22-43-28.jpg", gallery:["https://i.ibb.co/8nnBJhpG/photo-2026-08-09-22-43-28.jpg","https://i.ibb.co/v6y5nkS2/photo-2026-08-09-20-18-37.jpg"] }
     ];
-
     const params = new URLSearchParams(window.location.search);
     const product = products.find((item) => item.id === params.get("id")) || products[0];
     let cart = JSON.parse(localStorage.getItem("milkCaramelBearCart") || "[]");
-
-    function money(value) {
-      return `NT$${value.toLocaleString("zh-TW")}`;
-    }
-
-    function setText(selector, value) {
-      document.querySelector(selector).textContent = value;
-    }
-
-    function showToast(message) {
-      const toast = document.querySelector("[data-toast]");
-      toast.textContent = message;
-      toast.classList.add("is-visible");
-      window.setTimeout(() => toast.classList.remove("is-visible"), 1600);
-    }
-
-    function saveCart() {
-      localStorage.setItem("milkCaramelBearCart", JSON.stringify(cart));
-    }
-
-    function addToCart() {
-      const existingItem = cart.find((item) => item.id === product.id);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({ ...product, image: product.image, quantity: 1 });
-      }
-      saveCart();
-      showToast("已加入購物車");
-    }
-
-    function lineProduct() {
-      const message = `您好，我想詢問 ${product.name}，價格 ${money(product.price)}，想確認尺寸、現貨與下單方式，謝謝。`;
-      window.open(`${lineUrl}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-    }
-
-    function renderGallery() {
-      const mainImage = document.querySelector("[data-main-image]");
-      const thumbs = document.querySelector("[data-thumbs]");
-      mainImage.src = product.image;
-      mainImage.alt = product.name;
-      thumbs.innerHTML = product.gallery.map((image, index) => `
-        <button class="thumb${index === 0 ? " is-active" : ""}" type="button" data-gallery-index="${index}" aria-label="查看 ${product.name} 圖片 ${index + 1}">
-          <img src="${image}" alt="${product.name} 圖片 ${index + 1}">
-        </button>
-      `).join("");
-      thumbs.addEventListener("click", (event) => {
-        const button = event.target.closest("[data-gallery-index]");
-        if (!button) return;
-        const image = product.gallery[Number(button.dataset.galleryIndex)];
-        mainImage.src = image;
-        document.querySelectorAll(".thumb").forEach((thumb) => thumb.classList.remove("is-active"));
-        button.classList.add("is-active");
-      });
-    }
-
-    function renderProduct() {
-      document.title = `${product.name} | 奶糖熊童裝`;
-      setText("[data-breadcrumb-name]", product.name);
-      setText("[data-product-label]", product.label);
-      setText("[data-product-name]", product.name);
-      setText("[data-product-note]", product.note);
-      setText("[data-product-status]", product.status);
-      setText("[data-product-size]", product.size);
-      setText("[data-product-price]", money(product.price));
-      setText("[data-product-compare]", money(product.comparePrice));
-      setText("[data-product-description]", product.description);
-      setText("[data-product-fit]", product.fit);
-      renderGallery();
-    }
-
+    function money(value) { return `NT$${value.toLocaleString("zh-TW")}`; }
+    function setText(selector, value) { document.querySelector(selector).textContent = value; }
+    function showToast(message) { const toast = document.querySelector("[data-toast]"); toast.textContent = message; toast.classList.add("is-visible"); window.setTimeout(() => toast.classList.remove("is-visible"), 1600); }
+    function saveCart() { localStorage.setItem("milkCaramelBearCart", JSON.stringify(cart)); }
+    function addToCart() { const existingItem = cart.find((item) => item.id === product.id); if (existingItem) existingItem.quantity += 1; else cart.push({ ...product, image: product.image, quantity: 1 }); saveCart(); showToast("已加入購物車"); }
+    function lineProduct() { const message = `您好，我想詢問 ${product.name}，價格 ${money(product.price)}，想確認尺寸、現貨與下單方式，謝謝。`; window.open(`${lineUrl}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer"); }
+    function renderGallery() { const mainImage = document.querySelector("[data-main-image]"); const thumbs = document.querySelector("[data-thumbs]"); mainImage.src = product.image; mainImage.alt = product.name; thumbs.innerHTML = product.gallery.map((image, index) => `<button class="thumb${index === 0 ? " is-active" : ""}" type="button" data-gallery-index="${index}" aria-label="查看 ${product.name} 圖片 ${index + 1}"><img src="${image}" alt="${product.name} 圖片 ${index + 1}"></button>`).join(""); thumbs.addEventListener("click", (event) => { const button = event.target.closest("[data-gallery-index]"); if (!button) return; mainImage.src = product.gallery[Number(button.dataset.galleryIndex)]; document.querySelectorAll(".thumb").forEach((thumb) => thumb.classList.remove("is-active")); button.classList.add("is-active"); }); }
+    function renderProduct() { document.title = `${product.name} | 奶糖熊童裝`; setText("[data-breadcrumb-name]", product.name); setText("[data-product-label]", product.label); setText("[data-product-name]", product.name); setText("[data-product-note]", product.note); setText("[data-product-status]", product.status); setText("[data-product-size]", product.size); setText("[data-product-price]", money(product.price)); setText("[data-product-compare]", money(product.comparePrice)); setText("[data-product-description]", product.description); setText("[data-product-fit]", product.fit); renderGallery(); }
     document.querySelector("[data-add-cart]").addEventListener("click", addToCart);
     document.querySelector("[data-line-product]").addEventListener("click", lineProduct);
     renderProduct();
