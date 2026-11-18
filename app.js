@@ -45,7 +45,7 @@ const girls = {
     {
       id: "tc-3",
       name: "詩涵",
-      age: 21,
+      age: 29,
       tags: "清新臉蛋｜第一次認識",
       line: "https://line.me/ti/p/~ty6xi",
       photo: "girl-06.jpg",
