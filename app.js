@@ -5,7 +5,7 @@ const girls = {
       name: "小薇",
       age: 24,
       tags: "健談主動｜笑容很甜",
-      line: "https://line.me/ti/p/~m16sp",
+      line: "https://line.me/ti/p/~g36sp",
       photo: "girl-01.jpg",
     },
     {
@@ -13,7 +13,7 @@ const girls = {
       name: "語婷",
       age: 22,
       tags: "短髮可愛｜陪聊很甜",
-      line: "https://line.me/ti/p/~m16sp",
+      line: "https://line.me/ti/p/~g36sp",
       photo: "girl-02.jpg",
     },
     {
@@ -21,7 +21,7 @@ const girls = {
       name: "安琪",
       age: 26,
       tags: "輕熟氣質｜會撒嬌",
-      line: "https://line.me/ti/p/~m16sp",
+      line: "https://line.me/ti/p/~g36sp",
       photo: "girl-03.jpg",
     },
   ],
@@ -57,7 +57,7 @@ const girls = {
       name: "喬喬",
       age: 27,
       tags: "夜貓屬性｜有點壞",
-      line: "https://line.me/ti/p/~m16sp",
+      line: "https://line.me/ti/p/~g36sp",
       photo: "girl-07.jpg",
     },
     {
@@ -65,7 +65,7 @@ const girls = {
       name: "心心",
       age: 24,
       tags: "慢熱型｜慢慢聊",
-      line: "https://line.me/ti/p/~m16sp",
+      line: "https://line.me/ti/p/~g36sp",
       photo: "girl-08.jpg",
     },
     {
@@ -73,7 +73,7 @@ const girls = {
       name: "妮妮",
       age: 22,
       tags: "南部女孩｜今晚在線",
-      line: "https://line.me/ti/p/~m16sp",
+      line: "https://line.me/ti/p/~g36sp",
       photo: "girl-09.jpg",
     },
   ],
